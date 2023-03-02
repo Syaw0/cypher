@@ -6,16 +6,25 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "ts-node ./scripts/build.ts"
   },
   "repository": {
     "type": "git",
     "url": "git@syaw0.github.com:Syaw0/cypher.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cypher",
+    "cryptography",
+    "encrypt",
+    "decrypt",
+    "nodejs",
+    "node"
+  ],
+  "author": {
+    "name": "syaw0",
+    "email": "siamhb7@protonmail.com"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^15.0.1",
