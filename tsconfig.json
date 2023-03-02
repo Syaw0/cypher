@@ -6,7 +6,7 @@
     "target": "es2018",
     "declaration": true,
     "strict": true,
-    "module": "esnext",
+    "module": "CommonJS",
     "noEmitOnError": true,
     "lib": ["es2017"],
     "esModuleInterop": false
