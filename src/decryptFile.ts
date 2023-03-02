@@ -1,8 +1,8 @@
 import { createReadStream, createWriteStream } from "fs";
-import { scrypt, createCipheriv } from "crypto";
+import { scrypt, createDecipheriv } from "crypto";
 import { dirname, basename, extname } from "path";
 
-const encryptFile = async (path: string, key: string) => {
+const decryptFile = async (path: string, key: string) => {
   try {
     const algorithm = "aes-256-cbc";
     const initVector = new Uint8Array(16);
@@ -10,23 +10,22 @@ const encryptFile = async (path: string, key: string) => {
       if (err) {
         throw err;
       }
-      const file = createReadStream(path);
-      const encrypt = createCipheriv(algorithm, generatedKey, initVector);
-
-      const encryptedFile = createWriteStream(
+      const decipher = createDecipheriv(algorithm, generatedKey, initVector);
+      const decrypted = createWriteStream(
         dirname(path) +
           "/" +
           basename(path, extname(path)) +
-          "_encrypted" +
+          "_decrypted" +
           extname(path)
       );
-      file.pipe(encrypt).pipe(encryptedFile);
+      const encrypted = createReadStream(path);
+      encrypted.pipe(decipher).pipe(decrypted);
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export default encryptFile;
+export default decryptFile;
 
-encryptFile("/home/siavash/myimage.jpg", "key");
+decryptFile("/home/siavash/myimage_encrypted.jpg", "key");
